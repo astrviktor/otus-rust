@@ -1,5 +1,5 @@
 mod house_tests {
-    use smart_home::device::{Socket, Thermo, Device};
+    use smart_home::device::{Device, Thermo};
     use smart_home::house::House;
     use smart_home::room::Room;
     use std::collections::HashMap;

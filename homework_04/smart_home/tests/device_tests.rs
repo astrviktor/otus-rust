@@ -10,7 +10,7 @@ mod socket_tests {
             power_consumption: 20.0,
         };
 
-        let expected_info = "Device info - Socket name: Socket1, description: Socket1 description, power consumption: 20, state: false \n";
+        let expected_info = "Device info - Socket name: Socket1, description: Socket1 description, power consumption: 20.0, state: false \n";
         assert_eq!(socket.info(), expected_info);
     }
 }
