@@ -1,0 +1,13 @@
+path = ./smart_home
+
+fmt:
+	cd $(path) && cargo fmt --check --all
+
+clippy:
+	cd $(path) && cargo clippy --all --all-targets
+
+test:
+	cd $(path) && cargo test
+
+run:
+	cd $(path) && cargo run --example usage
