@@ -23,3 +23,9 @@ run_udp_server:
 
 run_udp_client:
 	cd $(path)/udp/client && cargo run client
+
+coverage:
+	cd $(path) && cargo tarpaulin --verbose
+
+coverage_html:
+	cd $(path) && cargo tarpaulin --out Html
