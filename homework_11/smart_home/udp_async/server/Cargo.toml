@@ -1,0 +1,8 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+smart_home ={ path = "../../../smart_home" }
+tokio = { version = "1.42.0", features = ["full"] }
