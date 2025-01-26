@@ -1,0 +1,128 @@
+swagger: "2.0"
+info:
+  title: Smart Home API
+  version: 1.0.0
+host: api.smart-home.com
+basePath: /v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /room/{roomName}/devices:
+    get:
+      summary: Получение списка Device в Room
+      description: Возвращает список устройств в комнате.
+      parameters:
+        - name: roomName
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Успешный ответ
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Device"
+        '404':
+          description: Комната не найдена
+
+  /house/{houseName}/rooms:
+    get:
+      summary: Получение списка Room в House
+      description: Возвращает список комнат в доме.
+      parameters:
+        - name: houseName
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Успешный ответ
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Room"
+        '404':
+          description: Дом не найден
+
+  /house/{houseName}/report:
+    get:
+      summary: Получение Report по House
+      description: Возвращает отчет о доме.
+      parameters:
+        - name: houseName
+          in: path
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Успешный ответ
+          schema:
+            type: string
+        '404':
+          description: Дом не найден
+
+security:
+  - ApiKeyAuth: []
+
+definitions:
+  Socket:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      is_on:
+        type: boolean
+      power_consumption:
+        type: number
+        format: float
+    example:
+      name: "Living Room Light"
+      description: "Main light in the living room"
+      is_on: false
+      power_consumption: 50.2
+
+  Thermo:
+    type: object
+    properties:
+      name:
+        type: string
+      temperature:
+        type: number
+        format: float
+    example:
+      name: "Living Room Thermostat"
+      temperature: 22.5
+
+  Room:
+    type: object
+    properties:
+      name:
+        type: string
+      devices:
+        type: array
+        items:
+          $ref: "#/definitions/Device"
+
+  Device:
+    type: object
+    oneOf:
+      - $ref: "#/definitions/Socket"
+      - $ref: "#/definitions/Thermo"
+
+  House:
+    type: object
+    properties:
+      name:
+        type: string
+      rooms:
+        type: array
+        items:
+          $ref: "#/definitions/Room"
