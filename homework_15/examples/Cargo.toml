@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "my_get_int",
+  "run_get_int_static",
+  "run_get_int_deps"
+]
