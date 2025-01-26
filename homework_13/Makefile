@@ -3,6 +3,9 @@ path = ./smart_home
 fmt:
 	cd $(path) && cargo fmt --check --all
 
+fmt_fix:
+	cd $(path) && cargo fmt --all
+
 clippy:
 	cd $(path) && cargo clippy --all --all-targets
 

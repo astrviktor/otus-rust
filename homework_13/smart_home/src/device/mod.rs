@@ -4,7 +4,7 @@ pub mod thermo;
 pub use socket::Socket;
 pub use thermo::Thermo;
 
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum Device {

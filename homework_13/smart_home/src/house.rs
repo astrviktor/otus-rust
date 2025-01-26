@@ -1,7 +1,7 @@
 use crate::device::Device;
 use crate::room::Room;
+use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
-use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct House {
